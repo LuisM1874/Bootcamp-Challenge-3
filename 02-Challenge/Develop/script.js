@@ -7,21 +7,21 @@ var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var numbers = "1234567890"
 var specials = "!@£$%^&*?~/"
 
-function generatePassword(){
-  var letters = ""
-  var numSpecial = ""
+function getPassword(){
+  var characters = ""
+  var randomPass = ""
 
   // This will pop up to explain to user how to use the function  
-  var passLength = prompt ("Pick a length for your password between 6-20 characters. Please type the length of password you would like");
+  var passLength = prompt ("Pick a length for your password between 6-40 characters. Please type the length of password you would like");
  
   //This will pop up when the user fails to select the correct criteria for their password.
-  if(passLength < 6 || passLength > 128 || isNaN(passLength)) {
-    alert ("The password must be between 6 and 20 characters , Please enter a value between these two values.");
+  if(passLength < 6 || passLength > 40 || isNaN(passLength)) {
+    alert ("The password must be between 6 and 40 characters , Please enter a value between these two values.");
     return;
 
 //Asks user their parameters of their desired password
   } else {
-  var lower = confirm("Do you want your password to have lowercase letters?");
+    var lower = confirm("Do you want your password to have lowercase letters?");
     if (lower) {characters += lowercase;}
     var upper = confirm("Do you want your password to contain uppercase characters?");
     if (upper) {characters += uppercase;}
@@ -41,13 +41,12 @@ function generatePassword(){
   var passwordText = document.querySelector("#password");
 
   function writePassword (randomPass) {
-    if (passwordText.length === 0) {
+    if (password.length === 0) {
     return ;
     }
     passwordText.value = randomPass;
   }
 
-  generateBtn.addEventListener("click", function () {writePassword(generatePassword())});
+  generateBtn.addEventListener("click", function () {writePassword(getPassword())});
 
 
-  
